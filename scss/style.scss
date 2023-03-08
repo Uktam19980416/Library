@@ -1,0 +1,314 @@
+@import './_mixins.scss';
+@import './_vars.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  background-color: $bg-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 100px;
+
+  @include forTablet {
+    padding: 20px;
+  }
+
+  @include forMobile {
+    padding: 10px;
+  }
+
+  &__logo {
+    width: 100px;
+    height: 100px;
+
+    @include forTablet {
+      width: 70px;
+      height: 70px;
+    }
+
+    @include forMobile {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__add-button {
+    background-color: $bg-color;
+    border: 1px solid $font-color;
+    color: $font-color;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: $font-color;
+      color: $bg-color;
+    }
+
+    @include forTablet {
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+
+    @include forMobile {
+      padding: 5px;
+      font-size: 10px;
+    }
+  }
+}
+
+.main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  padding: 20px 100px;
+
+  @include forTablet {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px;
+  }
+
+  @include forMobile {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 10px;
+  }
+}
+
+.card {
+  background-color: $bg-color;
+  padding: 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    @include forTablet {
+      gap: 10px;
+    }
+
+    @include forMobile {
+      gap: 5px;
+    }
+  }
+}
+
+.book {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  
+  &__author,
+  &__name,
+  &__pages {
+    color: $font-color;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+
+    @include forTablet {
+      font-size: 14px;
+    }
+
+    @include forMobile {
+      font-size: 12px;
+    }
+  }
+
+  &__pages {
+    float: right;
+  }
+}
+
+.event {
+  &__read {
+    background-color: $read-color;
+    border: 1px solid transparent;
+    color: $text-color;
+    padding: 10px 20px;
+    margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: $font-color;
+      color: $bg-color;
+    }
+
+    @include forTablet {
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+
+    @include forMobile {
+      padding: 5px;
+      font-size: 10px;
+    }
+  }
+
+  &__delete {
+    background-color: $delete-color;
+    border: 1px solid transparent;
+    color: $trash-body-color;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: $font-color;
+      color: $bg-color;
+    }
+
+    @include forTablet {
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+
+    @include forMobile {
+      padding: 5px;
+      font-size: 10px;
+    }
+  }
+}
+
+.event__read--inactive {
+  background-color: $unread-color;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+  /* Modal Content */
+  &__content {
+    background-color: $bg-color;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+
+    @include forTablet {
+      width: 50%;
+    }
+
+    @include forMobile {
+      width: 80%;
+    }
+  }
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+
+  &:hover,
+  &:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+input:not([type='checkbox']) {
+  padding: 10px;
+  border: 1px solid $font-color;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  outline: none;
+  transition: all 0.3s ease;
+
+  &:focus {
+    border: 1px solid $bg-color;
+  }
+}
+
+label {
+  color: $font-color;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+
+  @include forTablet {
+    font-size: 16px;
+  }
+
+  @include forMobile {
+    font-size: 14px;
+  }
+}
+
+.submit {
+  background-color: $bg-color;
+  border: 1px solid $font-color;
+  color: $font-color;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 600;
+  width: 100%;
+  margin-top: 10px;
+
+  &:hover {
+    background-color: $font-color;
+    color: $bg-color;
+  }
+
+  @include forTablet {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  @include forMobile {
+    padding: 5px;
+    font-size: 10px;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  background-color: $bg-color;
+  padding: 2rem 0;
+}
+
+.made__by {
+  font-size: 20px;
+  color: #333;
+
+  &-name {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+  }
+}

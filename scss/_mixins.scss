@@ -1,0 +1,11 @@
+@mixin forTablet {
+  @media (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin forMobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
